@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitar cotação — Ellü Consórcios + Seguros</title>
+  <meta name="description" content="Peça sua proposta de consórcio ou cotação de seguro. Formulário rápido, adaptado ao serviço escolhido.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#013A36">
+  <link rel="icon" href="assets/img/logo-green.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .quote-wrap { position: relative; z-index: 3; margin-top: -90px; grid-template-columns: .8fr 1.2fr; }
+    @media (max-width: 900px) { .quote-wrap { margin-top: -40px; grid-template-columns: 1fr; } .quote-wrap .aside-card { order: 2; } }
+  </style>
+</head>
+<body>
+<script src="assets/js/data.js"></script>
+<div data-header=""></div>
+
+<main>
+  <section class="page-hero grain on-dark">
+    <div class="container">
+      <nav class="crumbs reveal" aria-label="Você está em"><a href="home.html">Início</a><span aria-hidden="true">›</span><span>Cotação</span></nav>
+      <span class="eyebrow reveal"><span class="plus-mark"></span> Cotação gratuita</span>
+      <h1 class="reveal" data-delay="1">Conte o que você precisa. <span class="hl">A Ellü encontra o melhor caminho.</span></h1>
+      <p class="lead reveal" data-delay="2">Escolha o serviço e responda algumas perguntas rápidas — o formulário se adapta a cada tipo de consórcio ou seguro.</p>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="margin-top:100px"><path fill="#FAF6F0" d="M0 70c180 40 360 50 560 20S960 0 1160 20s220 60 280 70v30H0z"/></svg>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="container contact-grid quote-wrap">
+      <aside class="aside-card grain on-dark reveal">
+        <span class="eyebrow"><span class="plus-mark"></span> Como funciona</span>
+        <h3>Simples, rápido e sem compromisso.</h3>
+        <p>Nada de robô e nada de produto empurrado: cada solicitação é analisada por um especialista Ellü.</p>
+        <div class="aside-steps">
+          <div><span class="n">1</span><span><b>Você envia</b><span>Leva menos de 2 minutos.</span></span></div>
+          <div><span class="n">2</span><span><b>A Ellü compara</b><span>Administradoras e seguradoras parceiras.</span></span></div>
+          <div><span class="n">3</span><span><b>Você recebe</b><span>As melhores opções no WhatsApp, tudo explicado.</span></span></div>
+        </div>
+        <a class="btn btn--wa btn--block" style="margin-top:28px" target="_blank" rel="noopener" data-wa-direct href="#"><i data-ico="wa" style="width:1.2em;height:1.2em"></i> Prefiro falar no WhatsApp</a>
+      </aside>
+      <div class="qw-card reveal" data-delay="1"><div data-wizard data-origem="página de cotação"></div></div>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/cotacao.js"></script>
+<script>document.querySelectorAll("[data-wa-direct]").forEach((a) => (a.href = waLink("Olá, Ellü! Quero uma cotação. (vim pelo site)")));</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador de consórcio — Ellü Consórcios + Seguros</title>
+  <meta name="description" content="Simule seu consórcio de imóvel, automóvel, moto, pesados ou serviços: escolha o objetivo, o valor e o prazo e veja a parcela na hora.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#013A36">
+  <link rel="icon" href="assets/img/logo-green.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .sim-wrap { position: relative; z-index: 3; margin-top: -90px; }
+    @media (max-width: 900px) { .sim-wrap { margin-top: -40px; } }
+  </style>
+</head>
+<body>
+<script src="assets/js/data.js"></script>
+<div data-header="simulador"></div>
+
+<main>
+  <section class="page-hero grain on-dark">
+    <div class="container">
+      <nav class="crumbs reveal" aria-label="Você está em"><a href="home.html">Início</a><span aria-hidden="true">›</span><a href="consorcios.html">Consórcios</a><span aria-hidden="true">›</span><span>Simulador</span></nav>
+      <span class="eyebrow reveal"><span class="plus-mark"></span> Simulador de consórcio</span>
+      <h1 class="reveal" data-delay="1">Simule seu plano <span class="hl">em segundos.</span></h1>
+      <p class="lead reveal" data-delay="2">Escolha o objetivo, quanto quer conquistar e em quanto tempo. Você vê a parcela estimada, quanto economiza em juros — e pode pedir a proposta real com um clique.</p>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="margin-top:100px"><path fill="#FAF6F0" d="M0 70c180 40 360 50 560 20S960 0 1160 20s220 60 280 70v30H0z"/></svg>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="container sim-wrap">
+      <div data-sim></div>
+    </div>
+  </section>
+
+  <section class="sec sec--cream">
+    <div class="container">
+      <div class="sec-head center">
+        <span class="eyebrow reveal"><span class="dots"></span> Entenda os números</span>
+        <h2 class="reveal" data-delay="1">O que compõe a <span class="hl">sua parcela</span></h2>
+        <p class="reveal" data-delay="2">Transparência é um valor da Ellü. Veja, de forma simples, o que existe em cada parcela de consórcio.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal"><span class="ic" data-ico="cash"></span><h3>Fundo comum</h3><p>É o valor da carta de crédito dividido pelo prazo. É ele que forma o dinheiro das contemplações do grupo.</p></div>
+        <div class="feat reveal" data-delay="1"><span class="ic" data-ico="percent"></span><h3>Taxa de administração</h3><p>Remunera a administradora pela gestão do grupo. É fixa em contrato e diluída em todas as parcelas.</p></div>
+        <div class="feat reveal" data-delay="2"><span class="ic" data-ico="shield"></span><h3>Fundo de reserva</h3><p>Pequeno percentual que protege o grupo contra inadimplência. O saldo é devolvido no encerramento.</p></div>
+        <div class="feat reveal" data-delay="3"><span class="ic" data-ico="refresh"></span><h3>Reajuste anual</h3><p>Crédito e parcelas são corrigidos por um índice do contrato, preservando o seu poder de compra.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-head center">
+        <span class="eyebrow reveal"><span class="dots"></span> Dúvidas sobre a simulação</span>
+        <h2 class="reveal" data-delay="1">Antes de pedir sua proposta</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal"><summary>A parcela da simulação é a parcela final?</summary><p>É uma estimativa com taxas de referência do mercado. Na proposta real, mostramos as condições exatas de cada grupo disponível — que podem ser ainda melhores.</p></details>
+        <details class="reveal"><summary>Por que o financiamento custa tanto a mais?</summary><p>Porque no financiamento há juros mensais sobre o saldo devedor durante todo o prazo. No consórcio não há juros: você paga a taxa de administração, diluída.</p></details>
+        <details class="reveal"><summary>Existe parcela reduzida até a contemplação?</summary><p>Alguns grupos oferecem planos com parcela reduzida até a contemplação. Se isso fizer sentido para você, incluímos essa opção na proposta.</p></details>
+        <details class="reveal"><summary>Posso ter mais de uma cota?</summary><p>Pode. Muitas pessoas combinam cotas para chegar ao valor desejado ou para ter mais chances de contemplação. Avaliamos a estratégia com você.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--orange grain cta-band">
+    <div class="bubbles" aria-hidden="true"><span style="width:420px;height:420px;left:-120px;top:-160px"></span><span style="width:300px;height:300px;right:6%;bottom:-140px"></span></div>
+    <div class="container" style="position:relative">
+      <span class="eyebrow reveal"><span class="plus-mark"></span> Próximo passo</span>
+      <h2 class="reveal" data-delay="1">Gostou do que viu? Vamos transformar em proposta.</h2>
+      <p class="reveal" data-delay="2">Um especialista Ellü busca os melhores grupos para você e te chama no WhatsApp.</p>
+      <div class="btn-row reveal" data-delay="3">
+        <a href="cotacao.html?g=consorcio" data-cotar="consorcio" data-origem="simulador - cta" class="btn btn--green btn--lg">Pedir proposta real <i data-ico="arrow" style="width:1.15em;height:1.15em"></i></a>
+        <a href="consorcios.html" class="btn btn--cream btn--lg">Entender o consórcio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/cotacao.js"></script>
+<script src="assets/js/simulador.js"></script>
+</body>
+</html>
