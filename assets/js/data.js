@@ -10,7 +10,7 @@ const ELLU = {
   email: "contato@elluperformance.com.br",
   insta: "https://www.instagram.com/elluperformance/",
   instaHandle: "@elluperformance",
-  rhSite: "https://guleite.github.io/ellu-performance/",
+  rhSite: "https://guleite.github.io/ellu-rh-dp/",
   city: "Brasília – DF",
 };
 

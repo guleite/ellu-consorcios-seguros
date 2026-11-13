@@ -22,13 +22,13 @@
     h.outerHTML = `
     <header class="site-header">
       <div class="container">
-        <a href="home.html" class="brand" aria-label="Ellü Consórcios + Seguros — início">
+        <a href="index.html" class="brand" aria-label="Ellü Consórcios + Seguros — início">
           <img src="assets/img/logo-cream.png" alt="Ellü" width="633" height="387">
           <span class="brand__sub">Consórcios<br><b>+</b> Seguros</span>
         </a>
         <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav class="nav" aria-label="Principal">
-          <a class="nav__link ${active === "inicio" ? "is-active" : ""}" href="home.html">Início</a>
+          <a class="nav__link ${active === "inicio" ? "is-active" : ""}" href="index.html">Início</a>
           <div class="nav-drop">
             <button type="button" class="nav__link ${active === "consorcios" ? "is-active" : ""}" aria-expanded="false">Consórcios ${ICON.chev}</button>
             <div class="nav-drop__menu">
@@ -48,7 +48,7 @@
           <a class="nav__link ${active === "contato" ? "is-active" : ""}" href="contato.html">Contato</a>
           <span class="front-switch" aria-label="Frentes da Ellü">
             <a href="${ELLU.rhSite}" title="Ir para Ellü RH + Departamento Pessoal">RH + DP ${ICON.ext}</a>
-            <a href="home.html" class="is-on" aria-current="true">Consórcios + Seguros</a>
+            <a href="index.html" class="is-on" aria-current="true">Consórcios + Seguros</a>
           </span>
           <a href="simulador.html" class="btn btn--orange ${active === "simulador" ? "is-active" : ""}">Simular agora</a>
         </nav>
@@ -63,7 +63,7 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a href="home.html" class="brand"><img src="assets/img/logo-cream.png" alt="Ellü" width="633" height="387"><span class="brand__sub">Consórcios<br><b>+</b> Seguros</span></a>
+            <a href="index.html" class="brand"><img src="assets/img/logo-cream.png" alt="Ellü" width="633" height="387"><span class="brand__sub">Consórcios<br><b>+</b> Seguros</span></a>
             <p style="max-width:24em">Consultoria em consórcios e seguros com o olhar humano da Ellü: planejamento para conquistar e proteção para quem você ama.</p>
             <div class="socials">
               <a href="${ELLU.insta}" target="_blank" rel="noopener" aria-label="Instagram">${ICON.insta}</a>
@@ -83,7 +83,7 @@
             <li>${ELLU.city}</li>
             <li>Seg. a sex., das 8h às 18h</li>
             <li><a href="cotacao.html">Solicitar cotação</a></li>
-            <li><a href="index.html">Portal Ellü</a></li>
+            <li><a href="https://guleite.github.io/ellu-performance/">Portal Ellü</a></li>
           </ul></div>
         </div>
         <div class="footer-bottom"><span>© <span data-year></span> Ellü Performance · Consórcios + Seguros. Todos os direitos reservados.</span><span>Proposta de layout desenvolvida por Concept Agência</span></div>

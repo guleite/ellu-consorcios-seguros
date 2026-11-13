@@ -24,7 +24,7 @@
   <section class="page-hero page-hero--split grain on-dark ${isSeg ? "page-hero--seg" : ""}">
     <div class="container">
       <div class="ph-copy">
-        <nav class="crumbs reveal" aria-label="Você está em"><a href="home.html">Início</a><span aria-hidden="true">›</span><a href="${groupUrl}">${groupName}</a><span aria-hidden="true">›</span><span>${s.name}</span></nav>
+        <nav class="crumbs reveal" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">›</span><a href="${groupUrl}">${groupName}</a><span aria-hidden="true">›</span><span>${s.name}</span></nav>
         <span class="eyebrow reveal">${isSeg ? '<span class="plus-mark plus-mark--mint"></span>' : '<span class="plus-mark"></span>'} ${s.name}</span>
         <h1 class="reveal" data-delay="1">${s.title}</h1>
         <p class="lead reveal" data-delay="2">${s.lead}</p>
