@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .quote-wrap { position: relative; z-index: 3; margin-top: -90px; grid-template-columns: .8fr 1.2fr; }
-    @media (max-width: 900px) { .quote-wrap { margin-top: -40px; grid-template-columns: 1fr; } .quote-wrap .aside-card { order: 2; } }
+    /* o card escuro começa já no creme, para não se fundir com o verde do topo */
+    .quote-wrap .aside-card { margin-top: 90px; }
+    @media (max-width: 900px) { .quote-wrap { margin-top: -40px; grid-template-columns: 1fr; } .quote-wrap .aside-card { order: 2; margin-top: 0; } }
   </style>
 </head>
 <body>

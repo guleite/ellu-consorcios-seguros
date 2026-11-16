@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .sim-wrap { position: relative; z-index: 3; margin-top: -90px; }
+    /* o card escuro do resultado começa já no creme, para não se fundir com o verde do topo */
+    .sim-wrap .sim__result { margin-top: 90px; }
+    @media (max-width: 1080px) { .sim-wrap .sim__result { margin-top: 0; } }
     @media (max-width: 900px) { .sim-wrap { margin-top: -40px; } }
   </style>
 </head>

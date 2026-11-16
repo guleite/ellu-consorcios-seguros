@@ -103,7 +103,8 @@
   document.querySelectorAll("[data-wa-direct]").forEach((a) => (a.href = waLink("Olá, Ellü! Vim pelo site de Consórcios + Seguros.")));
   document.querySelectorAll("[data-wa-label]").forEach((b) => (b.textContent = ELLU.whatsLabel));
   document.querySelectorAll("[data-mail]").forEach((a) => (a.href = "mailto:" + ELLU.email));
-  document.querySelectorAll("[data-mail-label]").forEach((b) => (b.textContent = ELLU.email));
+  // <wbr> depois do @: no celular o e-mail quebra em "contato@ / dominio" em vez de cortar no meio
+  document.querySelectorAll("[data-mail-label]").forEach((b) => (b.innerHTML = ELLU.email.replace("@", "@<wbr>")));
 
   const box = document.querySelector(".contact-form");
   const form = box.querySelector("form");
