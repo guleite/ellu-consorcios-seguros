@@ -151,7 +151,7 @@ hydrateIcons();
 
 /* ---------- Confete com as bolinhas do "ü" ---------- */
 const CALM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-function burst(x, y, colors = ["#F46F14", "#FF9A4D", "#F2A93B", "#013A36", "#8FD1BA"], n = 14) {
+function burst(x, y, colors = ["#EF7828", "#F79A5A", "#F2A93B", "#004444", "#96C7BE"], n = 14) {
   if (CALM) return;
   for (let i = 0; i < n; i++) {
     const d = document.createElement("span");
@@ -352,7 +352,7 @@ function tween(from, to, dur, step) {
   };
   chips.forEach((c) => c.addEventListener("click", (e) => {
     c.classList.toggle("is-on");
-    if (c.classList.contains("is-on")) burst(e.clientX, e.clientY, ["#1E8A6B", "#8FD1BA", "#F46F14", "#F2A93B"], 10);
+    if (c.classList.contains("is-on")) burst(e.clientX, e.clientY, ["#1F7A72", "#96C7BE", "#EF7828", "#F2A93B"], 10);
     render();
   }));
 })();

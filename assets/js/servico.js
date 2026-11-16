@@ -40,7 +40,7 @@
         <div class="float-card"><span class="ico ${isSeg ? "ico--teal" : ""}" data-ico="${s.icon}"></span><span><strong>${s.float[0]}</strong>${s.float[1]}</span></div>
       </div>
     </div>
-    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path fill="#FAF6F0" d="M0 70c180 40 360 50 560 20S960 0 1160 20s220 60 280 70v30H0z"/></svg>
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path fill="#F7F4EF" d="M0 70c180 40 360 50 560 20S960 0 1160 20s220 60 280 70v30H0z"/></svg>
   </section>
 
   <div class="container">
