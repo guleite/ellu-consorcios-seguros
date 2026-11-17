@@ -1184,10 +1184,10 @@ body.modal-open .wa { opacity: 0; pointer-events: none; }
 }
 @media (min-width: 1081px) and (max-width: 1439px) { .front-switch { display: none; } }
 
-/* Foto da Cíntia no círculo: ela está à esquerda no original, então a imagem
-   é ampliada um pouco e posicionada para o rosto ficar no centro do círculo */
-.photo-stack .mini--face { background: #0B4A45; }
-.photo-stack .mini--face img { position: absolute; width: 120%; height: auto; max-width: none; left: -1%; top: -32%; }
+/* Foto da Cíntia no círculo: ampliada a partir do rosto (que fica no terço
+   de cima da foto) para o retrato preencher o círculo */
+.photo-stack .mini--face img { object-position: 50% 0; transform: scale(1.3); transform-origin: 47.5% 40%; }
+.wa__top .av img { transform: scale(1.7); transform-origin: 47.5% 36%; }
 
 /* terceira aba ("Cuidar") na escolha rápida da home */
 .quick__card { grid-template-columns: 330px 1fr; }

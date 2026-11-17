@@ -254,7 +254,7 @@ document.querySelectorAll("[data-tabs]").forEach((wrap) => {
   el.className = "wa";
   el.innerHTML = `
     <div class="wa__chat" role="dialog" aria-label="Atendimento Ellü">
-      <div class="wa__top"><span class="av"><img src="assets/img/cintia-1.jpg" alt=""></span><div><b>Time Ellü</b><small>Online agora · responde rapidinho</small></div></div>
+      <div class="wa__top"><span class="av"><img src="assets/img/cintia.jpg" alt=""></span><div><b>Time Ellü</b><small>Online agora · responde rapidinho</small></div></div>
       <div class="wa__body">
         <div class="wa__msg">Oi! 👋 Que bom te ver por aqui.</div>
         <div class="wa__msg">Como podemos te ajudar hoje?</div>
