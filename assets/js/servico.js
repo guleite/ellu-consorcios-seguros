@@ -6,19 +6,37 @@
 (function servicePage() {
   const root = document.querySelector("[data-service-page]");
   if (!root) return;
-  const id = new URLSearchParams(location.search).get("s");
+  const id = svcId(new URLSearchParams(location.search).get("s"));
   const s = SERVICES[id] || SERVICES["consorcio-imovel"];
   const sid = SERVICES[id] ? id : "consorcio-imovel";
-  const isSeg = s.group === "seguro";
-  const groupName = isSeg ? "Seguros" : "Consórcios";
-  const groupUrl = isSeg ? "seguros.html" : "consorcios.html";
+  const isSaude = s.group === "saude";
+  const isSeg = s.group === "seguro" || isSaude; // seguros e planos de saúde usam a cor da proteção
+  const groupName = isSaude ? "Planos de Saúde" : isSeg ? "Seguros" : "Consórcios";
+  const groupUrl = isSaude ? "saude.html" : isSeg ? "seguros.html" : "consorcios.html";
+  const quem = isSaude ? "operadoras" : "seguradoras";
   const arrow = `<i data-ico="arrow" style="width:1.15em;height:1.15em"></i>`;
 
-  document.title = `${s.name} — Ellü Consórcios + Seguros`;
-  const hdr = document.querySelector(".nav-drop:nth-of-type(" + (isSeg ? 2 : 1) + ") > .nav__link");
+  document.title = `${s.name} — Ellü Consórcios + Seguros e Benefícios`;
+  const hdr = document.querySelector(`.nav-drop[data-drop="${s.group}"] > .nav__link`);
   if (hdr) hdr.classList.add("is-active");
 
-  const related = (isSeg ? SEGUROS : CONSORCIOS).filter((k) => k !== sid);
+  const related = isSaude
+    ? SAUDE.filter((k) => k !== sid).concat(["seguro-vida", "seguro-empresarial", "seguro-residencial"])
+    : (isSeg ? SEGUROS.concat(SAUDE) : CONSORCIOS).filter((k) => k !== sid);
+  const guia = isSaude ? `
+  <section class="sec sec--tight">
+    <div class="container">
+      <div class="sec-head sec-head--row" style="margin-bottom:30px">
+        <div><span class="eyebrow reveal"><span class="plus-mark plus-mark--mint"></span> Antes de contratar</span><h2 class="reveal" data-delay="1" style="font-size:clamp(1.6rem,2.6vw,2.2rem)">Entenda o plano <span class="hl">em 3 minutos</span></h2></div>
+        <a href="saude.html" class="link-arrow reveal">Guia completo <i data-ico="arrow"></i></a>
+      </div>
+      <div class="guide-links">
+        <a class="guide-link reveal" href="saude.html#monte"><span class="ic" data-ico="chart"></span><b>Monte seu plano</b><span>Veja como abrangência, acomodação e coparticipação mexem no preço.</span><i data-ico="arrow"></i></a>
+        <a class="guide-link reveal" data-delay="1" href="saude.html#carencias"><span class="ic" data-ico="clock"></span><b>Carências</b><span>Os prazos máximos da ANS e como a portabilidade evita esperar de novo.</span><i data-ico="arrow"></i></a>
+        <a class="guide-link reveal" data-delay="2" href="saude.html#glossario"><span class="ic" data-ico="bulb"></span><b>Glossário da saúde</b><span>Rede credenciada, reembolso, reajuste: tudo explicado sem jargão.</span><i data-ico="arrow"></i></a>
+      </div>
+    </div>
+  </section>` : "";
 
   root.innerHTML = `
   <section class="page-hero page-hero--split grain on-dark ${isSeg ? "page-hero--seg" : ""}">
@@ -69,14 +87,16 @@
       </div>
       <div>
         <span class="eyebrow reveal"><span class="dots"></span> Por que com a Ellü</span>
-        <h2 class="reveal" data-delay="1">${isSeg ? "Proteção explicada, <span class=\"hl\">sem letras miúdas</span>" : "Planejamento de verdade, <span class=\"hl\">não só uma cota</span>"}</h2>
+        <h2 class="reveal" data-delay="1">${isSaude ? "Saúde explicada, <span class=\"hl\">sem letras miúdas</span>" : isSeg ? "Proteção explicada, <span class=\"hl\">sem letras miúdas</span>" : "Planejamento de verdade, <span class=\"hl\">não só uma cota</span>"}</h2>
         <ul class="check-list reveal" data-delay="2">${s.why.map((w) => `<li><span>${w}</span></li>`).join("")}</ul>
         <div class="btn-row reveal" data-delay="3">
           <a href="#cotar" class="btn btn--green">${isSeg ? "Quero minha cotação" : "Quero uma proposta"} ${arrow}</a>
+          ${isSaude ? `<a href="${sid === "saude-pessoal" ? svcUrl("saude-empresarial") : svcUrl("saude-pessoal")}" class="btn btn--ghost-dark">${sid === "saude-pessoal" ? "Plano para empresa" : "Plano pessoal ou familiar"}</a>` : ""}
         </div>
       </div>
     </div>
   </section>
+  ${guia}
 
   ${isSeg ? "" : `
   <section class="sec" id="simule">
@@ -95,10 +115,10 @@
       <div class="aside-card grain on-dark reveal">
         <span class="eyebrow"><span class="plus-mark"></span> ${isSeg ? "Cotação gratuita" : "Proposta sem compromisso"}</span>
         <h3>${isSeg ? "Em poucos minutos você pede, a Ellü compara." : "Conte seu plano e receba uma proposta real."}</h3>
-        <p>${isSeg ? "Preencha os dados ao lado e nossa equipe cota nas principais seguradoras do mercado." : "Analisamos os grupos disponíveis nas administradoras parceiras e montamos a melhor estratégia para você."}</p>
+        <p>${isSeg ? `Preencha os dados ao lado e nossa equipe cota nas principais ${quem} do mercado.` : "Analisamos os grupos disponíveis nas administradoras parceiras e montamos a melhor estratégia para você."}</p>
         <div class="aside-steps">
           <div><span class="n">1</span><span><b>Você envia</b><span>Leva menos de 2 minutos.</span></span></div>
-          <div><span class="n">2</span><span><b>A Ellü analisa</b><span>${isSeg ? "Comparamos coberturas e preços." : "Selecionamos grupos e simulamos lances."}</span></span></div>
+          <div><span class="n">2</span><span><b>A Ellü analisa</b><span>${isSaude ? "Comparamos rede, cobertura e preço." : isSeg ? "Comparamos coberturas e preços." : "Selecionamos grupos e simulamos lances."}</span></span></div>
           <div><span class="n">3</span><span><b>Você decide</b><span>Recebe as opções no WhatsApp, com tudo explicado.</span></span></div>
         </div>
       </div>
@@ -119,7 +139,7 @@
   <section class="sec sec--tight ${isSeg ? "" : "sec--cream"}">
     <div class="container">
       <div class="sec-head sec-head--row" style="margin-bottom:30px">
-        <div><span class="eyebrow reveal"><span class="dots"></span> Veja também</span><h2 class="reveal" data-delay="1" style="font-size:clamp(1.6rem,2.6vw,2.2rem)">Outros ${isSeg ? "seguros" : "consórcios"}</h2></div>
+        <div><span class="eyebrow reveal"><span class="dots"></span> Veja também</span><h2 class="reveal" data-delay="1" style="font-size:clamp(1.6rem,2.6vw,2.2rem)">${isSaude ? "Mais formas de cuidar" : isSeg ? "Outras proteções" : "Outros consórcios"}</h2></div>
         <a href="${groupUrl}" class="link-arrow reveal">Ver todos <i data-ico="arrow"></i></a>
       </div>
       <div class="related">${related.slice(0, 4).map((k) => `<a class="rel reveal" href="${svcUrl(k)}"><span class="ic" data-ico="${SERVICES[k].icon}"></span>${SERVICES[k].name}</a>`).join("")}</div>
@@ -131,7 +151,7 @@
     <div class="container" style="position:relative">
       <span class="eyebrow reveal"><span class="plus-mark"></span> ${isSeg ? "Proteja agora" : "Comece hoje"}</span>
       <h2 class="reveal" data-delay="1">${isSeg ? "Tranquilidade custa menos do que você imagina." : "Seu plano merece começar com o pé direito."}</h2>
-      <p class="reveal" data-delay="2">${isSeg ? "Peça sua cotação e compare opções de várias seguradoras, com a orientação da Ellü." : "Simule, tire dúvidas e receba uma proposta real — sem compromisso."}</p>
+      <p class="reveal" data-delay="2">${isSeg ? `Peça sua cotação e compare opções de várias ${quem}, com a orientação da Ellü.` : "Simule, tire dúvidas e receba uma proposta real — sem compromisso."}</p>
       <div class="btn-row reveal" data-delay="3">
         <a href="#cotar" class="btn btn--green btn--lg">${isSeg ? "Cotar " + s.name : "Pedir proposta"} ${arrow}</a>
         <a href="${waLink(`Olá, Ellü! Quero conversar sobre ${s.name}. (vim pelo site)`)}" target="_blank" rel="noopener" class="btn btn--cream btn--lg">Falar no WhatsApp</a>

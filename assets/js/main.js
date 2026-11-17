@@ -22,14 +22,14 @@
     h.outerHTML = `
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="brand" aria-label="Ellü Consórcios + Seguros — início">
+        <a href="index.html" class="brand" aria-label="Ellü Consórcios + Seguros e Benefícios — início">
           <img src="assets/img/logo-cream.png" alt="Ellü" width="633" height="387">
-          <span class="brand__sub">Consórcios<br><b>+</b> Seguros</span>
+          <span class="brand__sub">Consórcios<br><b>+</b> Seguros e Benefícios</span>
         </a>
         <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav class="nav" aria-label="Principal">
           <a class="nav__link ${active === "inicio" ? "is-active" : ""}" href="index.html">Início</a>
-          <div class="nav-drop">
+          <div class="nav-drop" data-drop="consorcio">
             <button type="button" class="nav__link ${active === "consorcios" ? "is-active" : ""}" aria-expanded="false">Consórcios ${ICON.chev}</button>
             <div class="nav-drop__menu">
               <a class="mm-item ${svcFile === "consorcios.html" ? "is-active" : ""}" href="consorcios.html"><span class="ic">${ico("users")}</span><span><b>Como funciona</b><small>Entenda o consórcio em 1 minuto</small></span></a>
@@ -37,18 +37,27 @@
               <div class="mm-foot"><span><b>Simulador de consórcio</b>Descubra sua parcela em segundos</span><a class="btn btn--orange btn--sm" href="simulador.html">Simular ${ICON.arrow}</a></div>
             </div>
           </div>
-          <div class="nav-drop">
+          <div class="nav-drop" data-drop="seguro">
             <button type="button" class="nav__link ${active === "seguros" ? "is-active" : ""}" aria-expanded="false">Seguros ${ICON.chev}</button>
             <div class="nav-drop__menu">
               ${SEGUROS.map((id) => mm(id, "mm-item--seg")).join("")}
               <div class="mm-foot"><span><b>Cotação em várias seguradoras</b><a href="seguros.html" style="text-decoration:underline;text-underline-offset:3px">Ver todos os seguros</a></span><a class="btn btn--orange btn--sm" href="cotacao.html?g=seguro">Cotar seguro ${ICON.arrow}</a></div>
             </div>
           </div>
+          <div class="nav-drop" data-drop="saude">
+            <button type="button" class="nav__link ${active === "saude" ? "is-active" : ""}" aria-expanded="false">Planos de Saúde ${ICON.chev}</button>
+            <div class="nav-drop__menu">
+              <a class="mm-item mm-item--seg ${svcFile === "saude.html" ? "is-active" : ""}" href="saude.html"><span class="ic">${ico("bulb")}</span><span><b>Guia do plano de saúde</b><small>Como escolher sem cair em armadilhas</small></span></a>
+              ${SAUDE.map((id) => mm(id, "mm-item--seg")).join("")}
+              <a class="mm-item mm-item--seg" href="saude.html#carencias"><span class="ic">${ico("clock")}</span><span><b>Carências e portabilidade</b><small>Quanto tempo esperar — e como evitar</small></span></a>
+              <div class="mm-foot"><span><b>Cotação em várias operadoras</b>Pessoal, familiar ou empresarial</span><a class="btn btn--orange btn--sm" href="cotacao.html?g=saude">Cotar plano ${ICON.arrow}</a></div>
+            </div>
+          </div>
           <a class="nav__link ${active === "sobre" ? "is-active" : ""}" href="sobre.html">Sobre a Ellü</a>
           <a class="nav__link ${active === "contato" ? "is-active" : ""}" href="contato.html">Contato</a>
           <span class="front-switch" aria-label="Frentes da Ellü">
             <a href="${ELLU.rhSite}" title="Ir para Ellü RH + Departamento Pessoal">RH + DP ${ICON.ext}</a>
-            <a href="index.html" class="is-on" aria-current="true">Consórcios + Seguros</a>
+            <a href="index.html" class="is-on" aria-current="true">Consórcios + Seguros e Benefícios</a>
           </span>
           <a href="simulador.html" class="btn btn--orange ${active === "simulador" ? "is-active" : ""}">Simular agora</a>
         </nav>
@@ -63,12 +72,12 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a href="index.html" class="brand"><img src="assets/img/logo-cream.png" alt="Ellü" width="633" height="387"><span class="brand__sub">Consórcios<br><b>+</b> Seguros</span></a>
-            <p style="max-width:24em">Consultoria em consórcios e seguros com o olhar humano da Ellü: planejamento para conquistar e proteção para quem você ama.</p>
+            <a href="index.html" class="brand"><img src="assets/img/logo-cream.png" alt="Ellü" width="633" height="387"><span class="brand__sub">Consórcios<br><b>+</b> Seguros e Benefícios</span></a>
+            <p style="max-width:24em">Consultoria em consórcios, seguros e planos de saúde com o olhar humano da Ellü: planejamento para conquistar, proteção e cuidado para quem você ama.</p>
             <div class="socials">
               <a href="${ELLU.insta}" target="_blank" rel="noopener" aria-label="Instagram">${ICON.insta}</a>
               <a href="#" aria-label="LinkedIn">${ICON.linkedin}</a>
-              <a href="${waLink("Olá, Ellü! Vim pelo site de Consórcios + Seguros.")}" target="_blank" rel="noopener" aria-label="WhatsApp">${ICON.wa}</a>
+              <a href="${waLink("Olá, Ellü! Vim pelo site de Consórcios + Seguros e Benefícios.")}" target="_blank" rel="noopener" aria-label="WhatsApp">${ICON.wa}</a>
             </div>
             <a class="footer-other" href="${ELLU.rhSite}">
               <img src="assets/img/logo-cream.png" alt="">
@@ -77,8 +86,9 @@
           </div>
           <div><h4>Consórcios</h4><ul><li><a href="consorcios.html">Como funciona</a></li>${CONSORCIOS.map((id) => `<li><a href="${svcUrl(id)}">${SERVICES[id].name}</a></li>`).join("")}<li><a href="simulador.html">Simulador</a></li></ul></div>
           <div><h4>Seguros</h4><ul><li><a href="seguros.html">Todos os seguros</a></li>${SEGUROS.map((id) => `<li><a href="${svcUrl(id)}">${SERVICES[id].name}</a></li>`).join("")}</ul></div>
+          <div><h4>Planos de Saúde</h4><ul><li><a href="saude.html">Guia do plano de saúde</a></li>${SAUDE.map((id) => `<li><a href="${svcUrl(id)}">${SERVICES[id].name}</a></li>`).join("")}<li><a href="saude.html#carencias">Carências e portabilidade</a></li><li><a href="saude.html#glossario">Glossário da saúde</a></li><li><a href="cotacao.html?g=saude">Cotar plano de saúde</a></li></ul></div>
           <div><h4>Fale com a gente</h4><ul>
-            <li><a href="${waLink("Olá, Ellü! Vim pelo site de Consórcios + Seguros.")}" target="_blank" rel="noopener">WhatsApp ${ELLU.whatsLabel}</a></li>
+            <li><a href="${waLink("Olá, Ellü! Vim pelo site de Consórcios + Seguros e Benefícios.")}" target="_blank" rel="noopener">WhatsApp ${ELLU.whatsLabel}</a></li>
             <li><a href="mailto:${ELLU.email}">${ELLU.email}</a></li>
             <li>${ELLU.city}</li>
             <li>Seg. a sex., das 8h às 18h</li>
@@ -86,7 +96,7 @@
             <li><a href="https://guleite.github.io/ellu-performance/">Portal Ellü</a></li>
           </ul></div>
         </div>
-        <div class="footer-bottom"><span>© <span data-year></span> Ellü Performance · Consórcios + Seguros. Todos os direitos reservados.</span><span>Proposta de layout desenvolvida por Concept Agência</span></div>
+        <div class="footer-bottom"><span>© <span data-year></span> Ellü Performance · Consórcios + Seguros e Benefícios. Todos os direitos reservados.</span><span>Proposta de layout desenvolvida por Concept Agência</span></div>
       </div>
     </footer>`;
   }
@@ -97,6 +107,17 @@ function hydrateIcons(root = document) {
   root.querySelectorAll("[data-ico]").forEach((el) => { if (!el.firstChild) el.innerHTML = ico(el.dataset.ico); });
 }
 hydrateIcons();
+
+/* ---------- Linha de batimento (ECG): base fixa + pulso que corre ---------- */
+document.querySelectorAll("svg.ecg").forEach((svg) => {
+  const run = svg.querySelector("path");
+  if (!run || run.classList.contains("ecg__run")) return;
+  run.setAttribute("pathLength", "100");
+  const base = run.cloneNode();
+  base.setAttribute("class", "ecg__base");
+  run.setAttribute("class", "ecg__run");
+  svg.insertBefore(base, run);
+});
 
 /* ---------- Header / menu / reveal ---------- */
 (function ui() {
@@ -225,7 +246,8 @@ document.querySelectorAll("[data-tabs]").forEach((wrap) => {
   const opts = [
     ["🏠", "Quero simular um consórcio", "Olá, Ellü! Quero simular um consórcio."],
     ["🛡️", "Quero cotar um seguro", "Olá, Ellü! Quero fazer a cotação de um seguro."],
-    ["💬", "Tenho uma dúvida", "Olá, Ellü! Tenho uma dúvida sobre consórcios e seguros."],
+    ["🩺", "Quero um plano de saúde", "Olá, Ellü! Quero cotar um plano de saúde."],
+    ["💬", "Tenho uma dúvida", "Olá, Ellü! Tenho uma dúvida sobre consórcios, seguros e planos de saúde."],
     ["🤝", "Sou cliente Ellü RH", "Olá, Ellü! Já sou cliente de RH e quero conhecer consórcios e seguros."],
   ];
   const el = document.createElement("div");
@@ -327,10 +349,10 @@ function tween(from, to, dur, step) {
     casa: { seguro: ["seguro-residencial", 2, "Sua casa e seus bens merecem proteção — e a assistência 24h ajuda no dia a dia."] },
     aluguel: { seguro: ["seguro-residencial", 2, "Mesmo de aluguel, seus bens e sua responsabilidade precisam de cobertura."] },
     empresa: { seguro: ["seguro-empresarial", 3, "Seu negócio precisa de proteção de patrimônio, operação e equipe."] },
-    equipe: { seguro: ["seguro-saude", 3, "Plano de saúde e vida em grupo são benefícios que retêm talentos."] },
+    equipe: { seguro: ["saude-empresarial", 3, "Plano de saúde e vida em grupo são benefícios que retêm talentos."] },
     viaja: { seguro: ["seguro-viagem", 2, "Viaja com frequência? Despesas médicas no exterior podem sair caro."] },
     autonomo: { seguro: ["seguro-vida", 2, "Sem renda garantida em caso de afastamento? Diárias por incapacidade ajudam."] },
-    saude: { seguro: ["seguro-saude", 2, "Rede credenciada e cobertura certa para cuidar da saúde com tranquilidade."] },
+    saude: { seguro: ["saude-pessoal", 2, "Rede credenciada e cobertura certa para cuidar da saúde com tranquilidade."] },
   };
   const out = box.querySelector(".quiz__result");
   const chips = box.querySelectorAll(".qz");

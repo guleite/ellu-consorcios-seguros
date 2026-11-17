@@ -9,6 +9,7 @@ class QuoteWizard {
     this.root = root;
     this.o = opts;
     this.data = { ...(opts.preset || {}) };
+    if (opts.service) opts.service = svcId(opts.service);
     this.service = SERVICES[opts.service] ? opts.service : null;
     this.filter = opts.filter || (opts.service && !SERVICES[opts.service] ? opts.service : null); // "consorcio" | "seguro"
     this.lockService = !!this.service && opts.lock !== false;
@@ -55,22 +56,24 @@ class QuoteWizard {
       h.innerHTML = `<span class="ic">${ICON.chat}</span><span><small>Cotação gratuita</small><b>Como a Ellü pode te ajudar?</b></span>`;
       return;
     }
-    h.innerHTML = `<span class="ic ${s.group === "seguro" ? "ic--seg" : ""}">${ico(s.icon)}</span>
-      <span><small>${s.group === "seguro" ? "Cotação de seguro" : "Proposta de consórcio"}</small><b>${s.name}</b></span>
+    h.innerHTML = `<span class="ic ${s.group !== "consorcio" ? "ic--seg" : ""}">${ico(s.icon)}</span>
+      <span><small>${{ seguro: "Cotação de seguro", saude: "Cotação de plano de saúde", consorcio: "Proposta de consórcio" }[s.group]}</small><b>${s.name}</b></span>
       ${this.lockService && this.o.allowChange !== false ? `<button type="button" class="qchange">Trocar</button>` : ""}`;
   }
 
   svcStep() {
     const opt = (id) => {
       const s = SERVICES[id];
-      return `<button type="button" class="svc-opt ${s.group === "seguro" ? "svc-opt--seg" : ""}" data-svc="${id}"><span class="ic">${ico(s.icon)}</span>${s.short === "Saúde" ? "Saúde e odonto" : s.short}</button>`;
+      return `<button type="button" class="svc-opt ${s.group !== "consorcio" ? "svc-opt--seg" : ""}" data-svc="${id}"><span class="ic">${ico(s.icon)}</span>${s.group === "saude" ? s.name.replace("Plano de Saúde ", "Saúde ") : s.short}</button>`;
     };
-    const showC = this.filter !== "seguro", showS = this.filter !== "consorcio";
-    return `<h3>O que você quer conquistar ou proteger?</h3>
+    const f = this.filter;
+    const showC = !f || f === "consorcio", showS = !f || f === "seguro", showH = !f || f === "seguro" || f === "saude";
+    return `<h3>${f === "saude" ? "Para quem é o plano de saúde?" : "O que você quer conquistar, proteger ou cuidar?"}</h3>
       <p class="hint">Escolha o serviço e a gente adapta as próximas perguntas para você.</p>
       <div class="svc-pick">
         ${showC ? `<h4>Consórcios · conquistar</h4><div class="svc-grid">${CONSORCIOS.map(opt).join("")}</div>` : ""}
         ${showS ? `<h4>Seguros · proteger</h4><div class="svc-grid">${SEGUROS.map(opt).join("")}</div>` : ""}
+        ${showH ? `<h4>Planos de saúde · cuidar</h4><div class="svc-grid">${SAUDE.map(opt).join("")}</div>` : ""}
       </div>`;
   }
 
@@ -89,8 +92,8 @@ class QuoteWizard {
       ];
     }
     this.fields = fields;
-    const title = s.group === "seguro" ? `Conte um pouco sobre o que você quer proteger` : `Vamos desenhar o seu plano`;
-    const hint = s.group === "seguro" ? "Com essas informações cotamos nas principais seguradoras." : "Ajuste o valor e o prazo — a proposta final vem com as condições reais dos grupos disponíveis.";
+    const title = { seguro: "Conte um pouco sobre o que você quer proteger", saude: "Conte quem você quer cuidar", consorcio: "Vamos desenhar o seu plano" }[s.group];
+    const hint = { seguro: "Com essas informações cotamos nas principais seguradoras.", saude: "Com essas informações comparamos rede, cobertura e preço nas principais operadoras.", consorcio: "Ajuste o valor e o prazo — a proposta final vem com as condições reais dos grupos disponíveis." }[s.group];
     let html = `<h3>${title}</h3><p class="hint">${hint}</p>`;
     for (let i = 0; i < fields.length; i++) {
       const f = fields[i];
@@ -265,8 +268,8 @@ class QuoteWizard {
     el.innerHTML = `
       <div class="seal">${ICON.check}</div>
       <span class="kick">Solicitação recebida</span>
-      <h3>${first}, sua ${s.group === "seguro" ? "cotação" : "proposta"} já está com a gente!</h3>
-      <p class="hint">${s.group === "seguro" ? "Vamos cotar nas principais seguradoras e te chamar no WhatsApp com as melhores opções." : "Vamos analisar os grupos disponíveis e te chamar no WhatsApp com a proposta real."} Quer agilizar? Continue a conversa agora:</p>
+      <h3>${first}, sua ${s.group === "consorcio" ? "proposta" : "cotação"} já está com a gente!</h3>
+      <p class="hint">${{ seguro: "Vamos cotar nas principais seguradoras e te chamar no WhatsApp com as melhores opções.", saude: "Vamos comparar as principais operadoras e te chamar no WhatsApp com as melhores opções de rede e preço.", consorcio: "Vamos analisar os grupos disponíveis e te chamar no WhatsApp com a proposta real." }[s.group]} Quer agilizar? Continue a conversa agora:</p>
       <dl class="qsummary">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
       <a class="btn btn--wa btn--lg btn--block qwa" target="_blank" rel="noopener" href="#">${ICON.wa} Continuar no WhatsApp</a>
       <p class="qprivacy" style="justify-content:center">A conversa já abre com os seus dados — nada de repetir tudo.</p>`;
@@ -330,7 +333,7 @@ const Cotacao = (function () {
 /* ---------- Inline: <div data-wizard="seguro-auto|consorcio|seguro|"> ---------- */
 document.querySelectorAll("[data-wizard]").forEach((el) => {
   const q = new URLSearchParams(location.search);
-  const v = el.dataset.wizard || q.get("s") || q.get("g") || "";
+  const v = el.dataset.wizard || svcId(q.get("s") || "") || q.get("g") || "";
   const preset = {};
   if (q.get("valor")) preset.valor = +q.get("valor");
   if (q.get("prazo")) preset.prazo = `${q.get("prazo")} meses`;

@@ -1,6 +1,6 @@
 /* =========================================================
    ELLÜ CONSÓRCIOS + SEGUROS — dados compartilhados
-   Contatos, ícones e o catálogo de serviços (consórcios e seguros).
+   Contatos, ícones e o catálogo de serviços (consórcios, seguros e planos de saúde).
    ========================================================= */
 
 const ELLU = {
@@ -82,6 +82,12 @@ const ICON = {
   linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.97 1.97 0 1 0 5.3 7a1.97 1.97 0 0 0-.05-4ZM20.44 13.4c0-3.1-1.65-4.55-3.86-4.55-1.78 0-2.58.98-3.03 1.67V8.5h-3.38c.05.95 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.69.13-.93.27-.69.9-1.4 1.95-1.4 1.38 0 1.93 1.05 1.93 2.6V20h3.38v-6.6Z"/></svg>',
   puzzle: `<svg ${S}><path d="M10 3h4v2.5a1.5 1.5 0 1 0 3 0V3h4v7h-2.5a1.5 1.5 0 1 0 0 3H21v8h-7v-2.5a1.5 1.5 0 1 0-3 0V21H3v-8h2.5a1.5 1.5 0 1 0 0-3H3V3h7z"/></svg>`,
   plus: `<svg ${S} stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>`,
+  pulse: `<svg ${S}><path d="M2.5 12.5h4l2-5 3.5 10 2.5-7 1.5 2h5.5"/></svg>`,
+  briefcase: `<svg ${S}><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18M10.5 12.5v1.5h3v-1.5"/></svg>`,
+  hospital: `<svg ${S}><path d="M4 20.5V8a1 1 0 0 1 1-1h3V4.5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1V7h3a1 1 0 0 1 1 1v12.5"/><path d="M12 6v4M10 8h4M2.5 20.5h19M10 20.5v-4h4v4M7 11.5h1M16 11.5h1M7 14.5h1M16 14.5h1"/></svg>`,
+  bed: `<svg ${S}><path d="M3 18.5V6M3 14h18v4.5M21 14v-2.5a3 3 0 0 0-3-3h-7V14"/><circle cx="7" cy="10.5" r="2"/></svg>`,
+  receipt: `<svg ${S}><path d="M6 3.5h12v17l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3-2 1.3z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></svg>`,
+  baby: `<svg ${S}><circle cx="12" cy="12" r="8.5"/><path d="M9.5 14.5c.7.7 1.5 1 2.5 1s1.8-.3 2.5-1M9 10.5h.01M15 10.5h.01M12 3.5c-1 1.2-1 2.6 0 3.5"/></svg>`,
 };
 const ico = (name) => ICON[name] || "";
 
@@ -317,31 +323,6 @@ const SERVICES = {
       { id: "interesse", type: "multi", label: "O que você quer proteger?", options: ["Imóvel e patrimônio", "Estoque e equipamentos", "Lucros cessantes", "Responsabilidade civil", "Vida em grupo", "Plano de saúde", "Frota"] },
     ],
   },
-  "seguro-saude": {
-    group: "seguro", name: "Saúde e Odonto", short: "Saúde", icon: "health",
-    img: "photo-1758691462863-9e1b8a863140", img2: "photo-1761839258568-fd466a93f68b",
-    menu: "Individual, familiar e empresarial",
-    title: 'Saúde em primeiro lugar, <span class="hl-mint">para você e sua equipe</span>.',
-    lead: "Comparamos planos de saúde e odontológicos das principais operadoras para encontrar a melhor rede, cobertura e preço — para você, sua família ou sua empresa.",
-    card: "Planos de saúde e odonto individuais, familiares e empresariais.",
-    float: ["Comparativo", "entre as principais operadoras"],
-    facts: [["users", "Individual e familiar", "para todas as idades"], ["building", "Empresarial (PME)", "a partir de 2 vidas"], ["tooth", "Odontológico", "planos acessíveis"], ["compare", "Comparativo", "rede, cobertura e preço"]],
-    usesTitle: "O plano certo para <span class=\"hl\">cada momento</span>",
-    uses: [["user", "Plano individual"], ["users", "Plano familiar"], ["building", "Plano empresarial (PME)"], ["tooth", "Odontológico"], ["stetho", "Rede credenciada de qualidade"], ["refresh", "Portabilidade de carências"]],
-    why: ["Analisamos a rede credenciada que realmente importa para você.", "Explicamos coparticipação, carências e reajustes com clareza.", "Planos empresariais integrados à estratégia de benefícios do RH.", "Apoio na portabilidade e nas dúvidas do dia a dia."],
-    faq: [
-      ["Plano empresarial é mais barato?", "Em muitos casos, sim. Com CNPJ (inclusive MEI, conforme a operadora) é possível acessar planos PME com melhores condições."],
-      ["O que é coparticipação?", "É quando você paga uma parte de consultas e exames ao usar. A mensalidade fica menor — ideal para quem usa o plano com pouca frequência."],
-      ["Posso trocar de plano sem cumprir carência?", "Com a portabilidade de carências, sim, desde que cumpridos os requisitos da ANS. A Ellü orienta todo o processo."],
-    ],
-    fields: [
-      { id: "tipo", type: "chips", label: "Tipo de plano", options: ["Individual", "Familiar", "Empresarial (PME)"] },
-      { id: "vidas", type: "chips", label: "Quantas pessoas?", options: ["1", "2 a 4", "5 a 29", "30 ou mais"] },
-      { id: "idades", type: "text", label: "Idades dos beneficiários", placeholder: "Ex.: 38, 36, 8, 5" },
-      { id: "copart", type: "chips", label: "Preferência", options: ["Com coparticipação", "Sem coparticipação", "Quero orientação"] },
-      { id: "odonto", type: "chips", label: "Incluir odontológico?", options: ["Sim", "Não"] },
-    ],
-  },
   "seguro-viagem": {
     group: "seguro", name: "Seguro Viagem", short: "Viagem", icon: "plane",
     img: "photo-1763618769707-3e318c25325f", img2: "photo-1504150558240-0b4fd8946624",
@@ -367,10 +348,73 @@ const SERVICES = {
       { id: "motivo", type: "chips", label: "Motivo da viagem", options: ["Lazer", "Trabalho", "Estudo / intercâmbio"] },
     ],
   },
+
+  /* ============ BENEFÍCIOS · PLANOS DE SAÚDE ============ */
+  "saude-pessoal": {
+    group: "saude", name: "Plano de Saúde Pessoal", short: "Pessoal", icon: "stetho",
+    img: "photo-1758691463331-2ac00e6f676f", img2: "photo-1760084836111-b384c6d32104",
+    menu: "Para você, sua família ou seus pais",
+    title: 'Saúde de quem você ama, <span class="hl-mint">com o plano certo</span>.',
+    lead: "Comparamos os planos das principais operadoras para encontrar a rede de hospitais, a cobertura e o preço que fazem sentido para você e sua família — e explicamos cada detalhe antes de você assinar.",
+    card: "Individual, familiar ou por adesão: rede, cobertura e preço comparados para você.",
+    float: ["Rede comparada", "hospitais e laboratórios que você usa"],
+    facts: [["users", "Você e sua família", "planos para todas as idades"], ["compare", "Várias operadoras", "comparamos rede, cobertura e preço"], ["refresh", "Portabilidade", "troque de plano sem cumprir carência"], ["receipt", "Dedução no IR", "na declaração completa"]],
+    usesTitle: "Um plano que <span class=\"hl\">cabe na sua vida</span>",
+    uses: [["user", "Só para mim"], ["users", "Para a família toda"], ["heart", "Para meus pais"], ["baby", "Gestação e chegada do bebê"], ["store", "MEI ou CNPJ próprio"], ["tooth", "Odontológico junto"]],
+    why: ["Começamos pelos hospitais, laboratórios e médicos que você não quer perder.", "Mostramos as três portas de entrada: individual, coletivo por adesão (pela sua profissão) e PME pelo seu CNPJ ou MEI.", "Explicamos carências, coparticipação e reajustes antes de você decidir.", "Seguimos com você depois: inclusões, reembolsos, dúvidas e portabilidade."],
+    faq: [
+      ["Ainda existe plano individual?", "Existe, mas poucas operadoras ainda vendem. Por isso comparamos também os planos coletivos por adesão (ligados à sua profissão ou entidade de classe) e os planos PME pelo seu CNPJ ou MEI — muitas vezes com preço melhor."],
+      ["O que é coparticipação?", "É quando você paga uma parte de consultas e exames ao usar. A mensalidade fica menor — costuma valer a pena para quem usa o plano com pouca frequência."],
+      ["Posso trocar de plano sem cumprir carência de novo?", "Sim, pela portabilidade de carências, desde que você cumpra os requisitos da ANS (como tempo mínimo no plano atual e faixa de preço compatível). A Ellü confere tudo e conduz o processo."],
+      ["Posso deduzir o plano no Imposto de Renda?", "Sim. As mensalidades do titular e dos dependentes declarados podem ser deduzidas como despesa médica na declaração completa do IR."],
+    ],
+    fields: [
+      { id: "para", type: "chips", label: "Para quem é o plano?", options: ["Só para mim", "Para mim e minha família", "Para meus pais", "Tenho MEI ou CNPJ"] },
+      { id: "vidas", type: "chips", label: "Quantas pessoas?", options: ["1", "2", "3 a 4", "5 ou mais"] },
+      { id: "idades", type: "text", label: "Idades de quem vai entrar no plano", placeholder: "Ex.: 38, 36, 8, 5" },
+      { id: "abrangencia", type: "chips", label: "Onde você precisa ser atendido?", options: ["No DF e entorno", "No Brasil todo", "Quero orientação"] },
+      { id: "acomodacao", type: "chips", label: "Acomodação na internação", options: ["Enfermaria", "Apartamento", "Quero orientação"] },
+      { id: "copart", type: "chips", label: "Coparticipação", options: ["Com coparticipação", "Sem coparticipação", "Quero orientação"] },
+      { id: "atual", type: "chips", label: "Você já tem plano hoje?", options: ["Não tenho", "Tenho e quero trocar", "Tenho e quero reduzir o custo"] },
+      { id: "extras", type: "multi", label: "Também quero", hint: "opcional", options: ["Odontológico", "Reembolso de consultas", "Telemedicina", "Hospital específico"] },
+    ],
+  },
+  "saude-empresarial": {
+    group: "saude", name: "Plano de Saúde Empresarial", short: "Empresarial", icon: "briefcase",
+    img: "photo-1758691737138-7b9b1884b1db", img2: "photo-1576267423445-b2e0074d68a4",
+    menu: "Para a sua equipe, a partir de 2 vidas",
+    title: 'O benefício que mais <span class="hl-mint">cuida, atrai e retém</span> o seu time.',
+    lead: "Plano de saúde para empresas de todos os tamanhos — do MEI com sócios à equipe com centenas de pessoas. Comparamos operadoras, desenhamos a política de benefícios junto com o RH e cuidamos da implantação e do dia a dia.",
+    card: "PME e empresas: saúde, odonto e vida em grupo num pacote de benefícios bem desenhado.",
+    float: ["Equipe cuidada", "a partir de 2 vidas, conforme a operadora"],
+    facts: [["briefcase", "A partir de 2 vidas", "MEI, ME, EPP e grandes empresas"], ["clock", "30 vidas ou mais", "sem carência para quem entra no prazo"], ["users", "Política de benefícios", "desenhada com o RH da Ellü"], ["chat", "Gestão do dia a dia", "inclusões, exclusões e reajustes"]],
+    usesTitle: "Benefícios que <span class=\"hl\">fazem diferença no time</span>",
+    uses: [["briefcase", "Plano PME (2 a 29 vidas)"], ["building", "Empresas com 30 vidas ou mais"], ["users", "Sócios, colaboradores e dependentes"], ["tooth", "Odontológico empresarial"], ["heart", "Vida em grupo"], ["pulse", "Telemedicina e bem-estar"]],
+    why: ["Desenhamos o benefício a partir do perfil, da cultura e do orçamento da equipe — com o olhar do RH da Ellü.", "Comparamos operadoras, redes e modelos (com ou sem coparticipação) e mostramos o custo por vida.", "Cuidamos da implantação, das movimentações de colaboradores e das renovações.", "Acompanhamos os reajustes anuais e negociamos quando for preciso."],
+    faq: [
+      ["MEI pode contratar plano de saúde empresarial?", "Pode. Muitas operadoras aceitam MEI a partir de 2 vidas (o titular e um dependente ou sócio), com algumas exigências, como tempo mínimo de CNPJ. Verificamos as regras de cada operadora para você."],
+      ["Plano empresarial tem carência?", "Depende do tamanho. Com 30 vidas ou mais, quem entra em até 30 dias da contratação ou da admissão fica livre de carências, pela regra da ANS. Abaixo disso, as carências podem ser reduzidas ou negociadas conforme a operadora."],
+      ["Como funciona o reajuste do plano empresarial?", "É anual. Planos com até 29 vidas entram num agrupamento da operadora (pool), que dilui o risco; acima disso, o reajuste considera o uso da própria empresa. A Ellü acompanha e negocia na renovação."],
+      ["A empresa precisa pagar 100% do plano?", "Não. A empresa pode custear tudo ou dividir com o colaborador. Ajudamos a desenhar a política que equilibra cuidado com o time e o caixa da empresa."],
+    ],
+    fields: [
+      { id: "empresa", type: "text", label: "Nome da empresa", placeholder: "Razão social ou nome fantasia" },
+      { id: "porte", type: "chips", label: "Tipo de empresa", options: ["MEI", "ME ou EPP", "Média ou grande empresa"] },
+      { id: "vidas", type: "chips", label: "Quantas vidas no plano?", options: ["2 a 5", "6 a 29", "30 a 99", "100 ou mais"] },
+      { id: "quem", type: "multi", label: "Quem vai entrar no plano?", options: ["Sócios", "Colaboradores", "Dependentes"] },
+      { id: "atual", type: "chips", label: "Situação atual", options: ["Primeiro plano da empresa", "Já temos e queremos revisar"] },
+      { id: "abrangencia", type: "chips", label: "Atendimento", options: ["No DF e entorno", "No Brasil todo", "Quero orientação"] },
+      { id: "extras", type: "multi", label: "Benefícios de interesse", hint: "opcional", options: ["Odontológico", "Vida em grupo", "Telemedicina", "Saúde emocional", "Coparticipação"] },
+    ],
+  },
 };
 
 const CONSORCIOS = Object.keys(SERVICES).filter((k) => SERVICES[k].group === "consorcio");
 const SEGUROS = Object.keys(SERVICES).filter((k) => SERVICES[k].group === "seguro");
+const SAUDE = Object.keys(SERVICES).filter((k) => SERVICES[k].group === "saude");
+// Endereços antigos continuam funcionando (ex.: o antigo "Saúde e Odonto")
+const SVC_ALIAS = { "seguro-saude": "saude-pessoal" };
+const svcId = (id) => SVC_ALIAS[id] || id;
 const svcUrl = (id) => `servico.html?s=${id}`;
 
 const BRL = (v, dec = 0) => (v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: dec, maximumFractionDigits: dec });
