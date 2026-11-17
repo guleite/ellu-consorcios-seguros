@@ -874,8 +874,11 @@ body.modal-open { overflow: hidden; }
 }
 .wa__btn::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: pulse 2.2s ease-out infinite; }
 .wa__btn:hover { transform: scale(1.08); }
-.wa__btn svg { width: 32px; height: 32px; transition: transform .4s var(--ease), opacity .3s; }
-.wa__btn .x { position: absolute; opacity: 0; transform: rotate(-90deg); width: 24px; height: 24px; }
+/* ícone do WhatsApp e o X ficam em camadas do tamanho do botão, centralizadas */
+.wa__btn .w, .wa__btn .x { position: absolute; inset: 0; display: grid; place-items: center; transition: transform .4s var(--ease), opacity .3s; }
+.wa__btn .w svg { width: 30px; height: 30px; }
+.wa__btn .x svg { width: 24px; height: 24px; }
+.wa__btn .x { opacity: 0; transform: rotate(-90deg); }
 .wa.is-open .wa__btn .w { opacity: 0; transform: rotate(90deg); }
 .wa.is-open .wa__btn .x { opacity: 1; transform: none; }
 .wa.is-open .wa__btn::before { animation: none; opacity: 0; }
